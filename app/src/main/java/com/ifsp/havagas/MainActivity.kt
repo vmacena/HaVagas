@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         val btnSave = findViewById<Button>(R.id.btn_save)
         val btnClear = findViewById<Button>(R.id.btn_clear)
         val etPhone = findViewById<EditText>(R.id.et_phone)
+        val etBirthDate = findViewById<EditText>(R.id.et_birth_date)
 
         btnClear.isEnabled = false
         btnSave.isEnabled = false
@@ -80,8 +81,8 @@ class MainActivity : AppCompatActivity() {
             findViewById<EditText>(R.id.et_full_name),
             findViewById<EditText>(R.id.et_email),
             etPhone,
-            findViewById<EditText>(R.id.et_mobile),
-            findViewById<EditText>(R.id.et_birth_date),
+            etMobile,
+            etBirthDate,
             etGraduationYear,
             etInstitution,
             etThesisTitle,
@@ -94,14 +95,28 @@ class MainActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val isAnyFieldNotEmpty = textFields.any { it.text.isNotEmpty() }
                 btnClear.isEnabled = isAnyFieldNotEmpty
-                btnSave.isEnabled = isAnyFieldNotEmpty && isPhoneValid(etPhone.text.toString())
+                btnSave.isEnabled = isAnyFieldNotEmpty && isPhoneValid(etPhone.text.toString()) && isPhoneValid(etMobile.text.toString()) && isDateValid(etBirthDate.text.toString())
             }
             override fun afterTextChanged(s: Editable?) {}
         }
 
         textFields.forEach { it.addTextChangedListener(textWatcher) }
 
-        etPhone.addTextChangedListener(object : TextWatcher {
+        etPhone.addTextChangedListener(createPhoneTextWatcher(etPhone))
+        etMobile.addTextChangedListener(createPhoneTextWatcher(etMobile))
+        etBirthDate.addTextChangedListener(createDateTextWatcher(etBirthDate))
+
+        btnSave.setOnClickListener {
+            saveForm()
+        }
+
+        btnClear.setOnClickListener {
+            clearForm()
+        }
+    }
+
+    private fun createPhoneTextWatcher(editText: EditText): TextWatcher {
+        return object : TextWatcher {
             private var isFormatting: Boolean = false
             private var deletingHyphen: Boolean = false
             private var hyphenStart: Int = 0
@@ -126,19 +141,32 @@ class MainActivity : AppCompatActivity() {
                 isFormatting = true
 
                 val formatted = formatPhoneNumber(s.toString())
-                etPhone.setText(formatted)
-                etPhone.setSelection(formatted.length)
+                editText.setText(formatted)
+                editText.setSelection(formatted.length)
 
                 isFormatting = false
             }
-        })
-
-        btnSave.setOnClickListener {
-            saveForm()
         }
+    }
 
-        btnClear.setOnClickListener {
-            clearForm()
+    private fun createDateTextWatcher(editText: EditText): TextWatcher {
+        return object : TextWatcher {
+            private var isFormatting: Boolean = false
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                if (isFormatting) return
+                isFormatting = true
+
+                val formatted = formatDate(s.toString())
+                editText.setText(formatted)
+                editText.setSelection(formatted.length)
+
+                isFormatting = false
+            }
         }
     }
 
@@ -153,9 +181,25 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun formatDate(date: String): String {
+        val cleaned = date.replace(Regex("[^\\d]"), "")
+        val match = Regex("(\\d{2})(\\d{2})(\\d{4})").find(cleaned)
+        return if (match != null) {
+            val (day, month, year) = match.destructured
+            "$day/$month/$year"
+        } else {
+            date
+        }
+    }
+
     private fun isPhoneValid(phone: String): Boolean {
         val regex = Regex("^\\(\\d{2}\\) \\d{4,5}-\\d{4}\$")
         return regex.matches(phone)
+    }
+
+    private fun isDateValid(date: String): Boolean {
+        val regex = Regex("^\\d{2}/\\d{2}/\\d{4}\$")
+        return regex.matches(date)
     }
 
     private fun saveForm() {
