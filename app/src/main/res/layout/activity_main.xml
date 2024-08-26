@@ -11,11 +11,12 @@
         android:id="@+id/et_full_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:hint="Nome completo"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.341"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintWidth_percent="0.8" />
 
     <EditText
@@ -23,10 +24,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="E-mail"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.341"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_full_name"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintWidth_percent="0.8" />
 
     <CheckBox
@@ -34,30 +35,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Deseja receber e-mails com atualizações?"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_email"
-        app:layout_constraintHorizontal_bias="0.5" />
+        app:layout_constraintHorizontal_bias="0.264"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_email" />
 
     <EditText
         android:id="@+id/et_phone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Telefone"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.341"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cb_receive_updates"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintWidth_percent="0.8" />
 
     <RadioGroup
         android:id="@+id/rg_phone_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="356dp"
+        android:layout_height="81dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_phone"
-        app:layout_constraintHorizontal_bias="0.5">
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_phone">
 
         <RadioButton
             android:id="@+id/rb_commercial"
@@ -77,10 +78,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Adicionar telefone celular"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rg_phone_type"
-        app:layout_constraintHorizontal_bias="0.5" />
+        app:layout_constraintHorizontal_bias="0.126"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rg_phone_type" />
 
     <EditText
         android:id="@+id/et_mobile"
@@ -96,12 +97,12 @@
 
     <RadioGroup
         android:id="@+id/rg_gender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="358dp"
+        android:layout_height="141dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_mobile"
-        app:layout_constraintHorizontal_bias="0.5">
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_mobile">
 
         <RadioButton
             android:id="@+id/rb_male"
@@ -127,10 +128,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Data de nascimento"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.329"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rg_gender"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintWidth_percent="0.8" />
 
     <Spinner
@@ -138,10 +139,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:entries="@array/formacao_array"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.329"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_birth_date"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintWidth_percent="0.8" />
 
     <EditText
@@ -197,21 +198,21 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Vagas de interesse"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.329"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_advisor"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintWidth_percent="0.8" />
 
     <Button
         android:id="@+id/btn_save"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
         android:text="Salvar"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_interested_jobs"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintWidth_percent="0.8" />
 
     <Button
