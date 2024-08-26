@@ -144,6 +144,65 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintWidth_percent="0.8" />
 
+    <EditText
+        android:id="@+id/et_graduation_year"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Ano de conclusão"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sp_education"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <EditText
+        android:id="@+id/et_institution"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Instituição"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_graduation_year"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <EditText
+        android:id="@+id/et_thesis_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Título da monografia"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_institution"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <EditText
+        android:id="@+id/et_advisor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Orientador"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_thesis_title"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <EditText
+        android:id="@+id/et_interested_jobs"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Vagas de interesse"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_advisor"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintWidth_percent="0.8" />
+
     <Button
         android:id="@+id/btn_save"
         android:layout_width="0dp"
@@ -151,7 +210,7 @@
         android:text="Salvar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sp_education"
+        app:layout_constraintTop_toBottomOf="@id/et_interested_jobs"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintWidth_percent="0.8" />
 
