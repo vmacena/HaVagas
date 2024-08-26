@@ -6,14 +6,17 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.*
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var formHandler: FormHandler
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        formHandler = FormHandler(this)
 
         val cbAddMobile: CheckBox = findViewById(R.id.cb_add_mobile)
         val etMobile: EditText = findViewById(R.id.et_mobile)
@@ -109,11 +112,45 @@ class MainActivity : AppCompatActivity() {
         etBirthDate.addTextChangedListener(createDateTextWatcher(etBirthDate))
 
         btnSave.setOnClickListener {
-            saveForm()
+            formHandler.saveForm(
+                findViewById<EditText>(R.id.et_full_name).text.toString(),
+                findViewById<EditText>(R.id.et_email).text.toString(),
+                findViewById<CheckBox>(R.id.cb_receive_updates).isChecked,
+                findViewById<EditText>(R.id.et_phone).text.toString(),
+                findViewById<RadioGroup>(R.id.rg_phone_type).checkedRadioButtonId,
+                findViewById<CheckBox>(R.id.cb_add_mobile).isChecked,
+                findViewById<EditText>(R.id.et_mobile).text.toString(),
+                findViewById<RadioGroup>(R.id.rg_gender).checkedRadioButtonId,
+                findViewById<EditText>(R.id.et_birth_date).text.toString(),
+                findViewById<Spinner>(R.id.sp_education).selectedItem.toString(),
+                findViewById<EditText>(R.id.et_graduation_year).text.toString(),
+                findViewById<EditText>(R.id.et_institution).text.toString(),
+                findViewById<EditText>(R.id.et_thesis_title).text.toString(),
+                findViewById<EditText>(R.id.et_advisor).text.toString(),
+                findViewById<EditText>(R.id.et_interested_jobs).text.toString()
+            )
         }
 
         btnClear.setOnClickListener {
-            clearForm()
+            formHandler.clearForm(
+                findViewById(R.id.et_full_name),
+                findViewById(R.id.et_email),
+                findViewById(R.id.cb_receive_updates),
+                findViewById(R.id.et_phone),
+                findViewById(R.id.rg_phone_type),
+                findViewById(R.id.cb_add_mobile),
+                findViewById(R.id.et_mobile),
+                findViewById(R.id.rg_gender),
+                findViewById(R.id.et_birth_date),
+                findViewById(R.id.sp_education),
+                findViewById(R.id.et_graduation_year),
+                findViewById(R.id.et_institution),
+                findViewById(R.id.et_thesis_title),
+                findViewById(R.id.et_advisor),
+                findViewById(R.id.et_interested_jobs),
+                findViewById(R.id.btn_clear),
+                findViewById(R.id.btn_save)
+            )
         }
     }
 
@@ -202,65 +239,5 @@ class MainActivity : AppCompatActivity() {
     private fun isDateValid(date: String): Boolean {
         val regex = Regex("^\\d{2}/\\d{2}/\\d{4}\$")
         return regex.matches(date)
-    }
-
-    private fun saveForm() {
-        val fullName = findViewById<EditText>(R.id.et_full_name).text.toString()
-        val email = findViewById<EditText>(R.id.et_email).text.toString()
-        val receiveUpdates = findViewById<CheckBox>(R.id.cb_receive_updates).isChecked
-        val phone = findViewById<EditText>(R.id.et_phone).text.toString()
-        val phoneType = findViewById<RadioGroup>(R.id.rg_phone_type).checkedRadioButtonId
-        val addMobile = findViewById<CheckBox>(R.id.cb_add_mobile).isChecked
-        val mobile = findViewById<EditText>(R.id.et_mobile).text.toString()
-        val gender = findViewById<RadioGroup>(R.id.rg_gender).checkedRadioButtonId
-        val birthDate = findViewById<EditText>(R.id.et_birth_date).text.toString()
-        val education = findViewById<Spinner>(R.id.sp_education).selectedItem.toString()
-        val graduationYear = findViewById<EditText>(R.id.et_graduation_year).text.toString()
-        val institution = findViewById<EditText>(R.id.et_institution).text.toString()
-        val thesisTitle = findViewById<EditText>(R.id.et_thesis_title).text.toString()
-        val advisor = findViewById<EditText>(R.id.et_advisor).text.toString()
-        val interestedJobs = findViewById<EditText>(R.id.et_interested_jobs).text.toString()
-
-        val message = """
-            Dados salvos:
-            Nome: $fullName
-            Email: $email
-            Telefone: $phone
-            Celular: $mobile
-            Data de Nascimento: $birthDate
-            Formação: $education
-            Ano de Conclusão: $graduationYear
-            Instituição: $institution
-            Título da Monografia: $thesisTitle
-            Orientador: $advisor
-            Vagas de Interesse: $interestedJobs
-        """.trimIndent()
-
-        AlertDialog.Builder(this)
-            .setTitle("Formulário Salvo")
-            .setMessage(message)
-            .setPositiveButton("OK", null)
-            .show()
-    }
-
-    private fun clearForm() {
-        findViewById<EditText>(R.id.et_full_name).text.clear()
-        findViewById<EditText>(R.id.et_email).text.clear()
-        findViewById<CheckBox>(R.id.cb_receive_updates).isChecked = false
-        findViewById<EditText>(R.id.et_phone).text.clear()
-        findViewById<RadioGroup>(R.id.rg_phone_type).clearCheck()
-        findViewById<CheckBox>(R.id.cb_add_mobile).isChecked = false
-        findViewById<EditText>(R.id.et_mobile).text.clear()
-        findViewById<EditText>(R.id.et_mobile).visibility = View.GONE
-        findViewById<RadioGroup>(R.id.rg_gender).clearCheck()
-        findViewById<EditText>(R.id.et_birth_date).text.clear()
-        findViewById<Spinner>(R.id.sp_education).setSelection(0)
-        findViewById<EditText>(R.id.et_graduation_year).text.clear()
-        findViewById<EditText>(R.id.et_institution).text.clear()
-        findViewById<EditText>(R.id.et_thesis_title).text.clear()
-        findViewById<EditText>(R.id.et_advisor).text.clear()
-        findViewById<EditText>(R.id.et_interested_jobs).text.clear()
-        findViewById<Button>(R.id.btn_clear).isEnabled = false
-        findViewById<Button>(R.id.btn_save).isEnabled = false
     }
 }
