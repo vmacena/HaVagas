@@ -10,7 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
-    @SuppressLint("MissingInflatedId", "CutPasteId")
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         val etInterestedJobs = findViewById<EditText>(R.id.et_interested_jobs)
         val btnSave = findViewById<Button>(R.id.btn_save)
         val btnClear = findViewById<Button>(R.id.btn_clear)
+        val etPhone = findViewById<EditText>(R.id.et_phone)
 
         btnClear.isEnabled = false
         btnSave.isEnabled = false
@@ -78,7 +79,7 @@ class MainActivity : AppCompatActivity() {
         val textFields = listOf(
             findViewById<EditText>(R.id.et_full_name),
             findViewById<EditText>(R.id.et_email),
-            findViewById<EditText>(R.id.et_phone),
+            etPhone,
             findViewById<EditText>(R.id.et_mobile),
             findViewById<EditText>(R.id.et_birth_date),
             etGraduationYear,
@@ -93,12 +94,44 @@ class MainActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val isAnyFieldNotEmpty = textFields.any { it.text.isNotEmpty() }
                 btnClear.isEnabled = isAnyFieldNotEmpty
-                btnSave.isEnabled = isAnyFieldNotEmpty
+                btnSave.isEnabled = isAnyFieldNotEmpty && isPhoneValid(etPhone.text.toString())
             }
             override fun afterTextChanged(s: Editable?) {}
         }
 
         textFields.forEach { it.addTextChangedListener(textWatcher) }
+
+        etPhone.addTextChangedListener(object : TextWatcher {
+            private var isFormatting: Boolean = false
+            private var deletingHyphen: Boolean = false
+            private var hyphenStart: Int = 0
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                if (isFormatting) return
+                if (count > 0 && s?.get(start) == '-') {
+                    deletingHyphen = true
+                    hyphenStart = start
+                } else {
+                    deletingHyphen = false
+                }
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (isFormatting) return
+                if (deletingHyphen && start == hyphenStart) return
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                if (isFormatting) return
+                isFormatting = true
+
+                val formatted = formatPhoneNumber(s.toString())
+                etPhone.setText(formatted)
+                etPhone.setSelection(formatted.length)
+
+                isFormatting = false
+            }
+        })
 
         btnSave.setOnClickListener {
             saveForm()
@@ -107,6 +140,22 @@ class MainActivity : AppCompatActivity() {
         btnClear.setOnClickListener {
             clearForm()
         }
+    }
+
+    private fun formatPhoneNumber(phone: String): String {
+        val cleaned = phone.replace(Regex("[^\\d]"), "")
+        val match = Regex("(\\d{2})(\\d{4,5})(\\d{4})").find(cleaned)
+        return if (match != null) {
+            val (ddd, part1, part2) = match.destructured
+            "($ddd) $part1-$part2"
+        } else {
+            phone
+        }
+    }
+
+    private fun isPhoneValid(phone: String): Boolean {
+        val regex = Regex("^\\(\\d{2}\\) \\d{4,5}-\\d{4}\$")
+        return regex.matches(phone)
     }
 
     private fun saveForm() {
