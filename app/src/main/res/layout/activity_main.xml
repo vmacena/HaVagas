@@ -82,4 +82,16 @@
         app:layout_constraintTop_toBottomOf="@id/rg_phone_type"
         app:layout_constraintHorizontal_bias="0.5" />
 
+    <EditText
+        android:id="@+id/et_mobile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Telefone celular"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cb_add_mobile"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintWidth_percent="0.8" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
