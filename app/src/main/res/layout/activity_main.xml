@@ -50,4 +50,26 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintWidth_percent="0.8" />
 
+    <RadioGroup
+        android:id="@+id/rg_phone_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_phone"
+        app:layout_constraintHorizontal_bias="0.5">
+
+        <RadioButton
+            android:id="@+id/rb_commercial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comercial" />
+
+        <RadioButton
+            android:id="@+id/rb_residential"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Residencial" />
+    </RadioGroup>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
