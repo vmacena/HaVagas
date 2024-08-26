@@ -15,34 +15,36 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val cbAddMobile = findViewById<CheckBox>(R.id.cb_add_mobile)
-        val etMobile = findViewById<EditText>(R.id.et_mobile)
-        val spEducation = findViewById<Spinner>(R.id.sp_education)
-        val etGraduationYear = findViewById<EditText>(R.id.et_graduation_year)
-        val etInstitution = findViewById<EditText>(R.id.et_institution)
-        val etThesisTitle = findViewById<EditText>(R.id.et_thesis_title)
-        val etAdvisor = findViewById<EditText>(R.id.et_advisor)
-        val etInterestedJobs = findViewById<EditText>(R.id.et_interested_jobs)
-        val btnSave = findViewById<Button>(R.id.btn_save)
-        val btnClear = findViewById<Button>(R.id.btn_clear)
-        val etPhone = findViewById<EditText>(R.id.et_phone)
-        val etBirthDate = findViewById<EditText>(R.id.et_birth_date)
+        val cbAddMobile: CheckBox = findViewById(R.id.cb_add_mobile)
+        val etMobile: EditText = findViewById(R.id.et_mobile)
+        val spEducation: Spinner = findViewById(R.id.sp_education)
+        val etGraduationYear: EditText = findViewById(R.id.et_graduation_year)
+        val etInstitution: EditText = findViewById(R.id.et_institution)
+        val etThesisTitle: EditText = findViewById(R.id.et_thesis_title)
+        val etAdvisor: EditText = findViewById(R.id.et_advisor)
+        val etInterestedJobs: EditText = findViewById(R.id.et_interested_jobs)
+        val btnSave: Button = findViewById(R.id.btn_save)
+        val btnClear: Button = findViewById(R.id.btn_clear)
+        val etPhone: EditText = findViewById(R.id.et_phone)
+        val etBirthDate: EditText = findViewById(R.id.et_birth_date)
 
         btnClear.isEnabled = false
         btnSave.isEnabled = false
 
         cbAddMobile.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                etMobile.visibility = View.VISIBLE
-            } else {
-                etMobile.visibility = View.GONE
-            }
+            etMobile.visibility = if (isChecked) View.VISIBLE else View.GONE
         }
 
         spEducation.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 when (position) {
-                    0, 1 -> {
+                    0 -> {
+                        etGraduationYear.visibility = View.GONE
+                        etInstitution.visibility = View.GONE
+                        etThesisTitle.visibility = View.GONE
+                        etAdvisor.visibility = View.GONE
+                    }
+                    1 -> {
                         etGraduationYear.visibility = View.VISIBLE
                         etInstitution.visibility = View.GONE
                         etThesisTitle.visibility = View.GONE
@@ -54,7 +56,7 @@ class MainActivity : AppCompatActivity() {
                         etThesisTitle.visibility = View.GONE
                         etAdvisor.visibility = View.GONE
                     }
-                    4, 5 -> {
+                    4, 5, 6 -> {
                         etGraduationYear.visibility = View.VISIBLE
                         etInstitution.visibility = View.VISIBLE
                         etThesisTitle.visibility = View.VISIBLE

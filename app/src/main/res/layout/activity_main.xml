@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,227 +8,259 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/et_full_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Nome completo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.341"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.8" />
+        <!-- Personal Information Section -->
 
-    <EditText
-        android:id="@+id/et_email"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="E-mail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.341"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_full_name"
-        app:layout_constraintWidth_percent="0.8" />
+        <EditText
+            android:id="@+id/et_full_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Nome completo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.195"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.8" />
 
-    <CheckBox
-        android:id="@+id/cb_receive_updates"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Deseja receber e-mails com atualizações?"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.264"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_email" />
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="E-mail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.195"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_full_name"
+            app:layout_constraintWidth_percent="0.8" />
 
-    <EditText
-        android:id="@+id/et_phone"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Telefone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.341"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cb_receive_updates"
-        app:layout_constraintWidth_percent="0.8" />
+        <!-- Phone Information Section -->
 
-    <RadioGroup
-        android:id="@+id/rg_phone_type"
-        android:layout_width="356dp"
-        android:layout_height="81dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_phone">
-
-        <RadioButton
-            android:id="@+id/rb_commercial"
+        <CheckBox
+            android:id="@+id/cb_receive_updates"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Comercial" />
+            android:text="Deseja receber e-mails com atualizações?"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_email" />
 
-        <RadioButton
-            android:id="@+id/rb_residential"
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Telefone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.195"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cb_receive_updates"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <TextView
+            android:id="@+id/tv_phone_type_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Residencial" />
-    </RadioGroup>
+            android:text="Tipo de Telefone"
+            app:layout_constraintTop_toBottomOf="@id/et_phone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    <CheckBox
-        android:id="@+id/cb_add_mobile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Adicionar telefone celular"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.126"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rg_phone_type" />
-
-    <EditText
-        android:id="@+id/et_mobile"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Telefone celular"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cb_add_mobile"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintWidth_percent="0.8" />
-
-    <RadioGroup
-        android:id="@+id/rg_gender"
-        android:layout_width="358dp"
-        android:layout_height="141dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_mobile">
-
-        <RadioButton
-            android:id="@+id/rb_male"
+        <RadioGroup
+            android:id="@+id/rg_phone_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Masculino" />
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/tv_phone_type_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <RadioButton
-            android:id="@+id/rb_female"
+            <RadioButton
+                android:id="@+id/rb_residential"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Residencial" />
+
+            <RadioButton
+                android:id="@+id/rb_commercial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comercial" />
+        </RadioGroup>
+
+        <CheckBox
+            android:id="@+id/cb_add_mobile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Feminino" />
+            android:text="Adicionar Celular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.384"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rg_phone_type" />
 
-        <RadioButton
-            android:id="@+id/rb_other"
+        <EditText
+            android:id="@+id/et_mobile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Celular"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/cb_add_mobile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <!-- Gender and Birth Date Section -->
+        <TextView
+            android:id="@+id/tv_gender_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Outro" />
-    </RadioGroup>
+            android:text="Sexo"
+            app:layout_constraintTop_toBottomOf="@id/et_mobile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    <EditText
-        android:id="@+id/et_birth_date"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Data de nascimento"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.329"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rg_gender"
-        app:layout_constraintWidth_percent="0.8" />
+        <RadioGroup
+            android:id="@+id/rg_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/tv_gender_label"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
-    <Spinner
-        android:id="@+id/sp_education"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:entries="@array/formacao_array"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.329"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_birth_date"
-        app:layout_constraintWidth_percent="0.8" />
+            <RadioButton
+                android:id="@+id/rb_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Masculino" />
 
-    <EditText
-        android:id="@+id/et_graduation_year"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Ano de conclusão"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sp_education"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintWidth_percent="0.8" />
+            <RadioButton
+                android:id="@+id/rb_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Feminino" />
+        </RadioGroup>
 
-    <EditText
-        android:id="@+id/et_institution"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Instituição"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_graduation_year"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintWidth_percent="0.8" />
+        <!-- Education Section -->
+        <EditText
+            android:id="@+id/et_birth_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Data de nascimento"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.195"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rg_gender"
+            app:layout_constraintWidth_percent="0.8" />
 
-    <EditText
-        android:id="@+id/et_thesis_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Título da monografia"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_institution"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintWidth_percent="0.8" />
+        <TextView
+            android:id="@+id/tv_education_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Formação"
+            app:layout_constraintTop_toBottomOf="@id/et_birth_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    <EditText
-        android:id="@+id/et_advisor"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Orientador"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_thesis_title"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintWidth_percent="0.8" />
+        <Spinner
+            android:id="@+id/sp_education"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/formacao_array"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.195"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_education_label"
+            app:layout_constraintWidth_percent="0.8" />
 
-    <EditText
-        android:id="@+id/et_interested_jobs"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Vagas de interesse"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.329"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_advisor"
-        app:layout_constraintWidth_percent="0.8" />
+        <EditText
+            android:id="@+id/et_graduation_year"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Ano de conclusão"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sp_education"
+            app:layout_constraintWidth_percent="0.8" />
 
-    <Button
-        android:id="@+id/btn_save"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Salvar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_interested_jobs"
-        app:layout_constraintWidth_percent="0.8" />
+        <EditText
+            android:id="@+id/et_institution"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Instituição"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_graduation_year"
+            app:layout_constraintWidth_percent="0.8" />
 
-    <Button
-        android:id="@+id/btn_clear"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Limpar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_save"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintWidth_percent="0.8" />
+        <EditText
+            android:id="@+id/et_thesis_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Título da monografia"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_institution"
+            app:layout_constraintWidth_percent="0.8" />
 
+        <EditText
+            android:id="@+id/et_advisor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Orientador"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_thesis_title"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <!-- Buttons Section -->
+
+        <EditText
+            android:id="@+id/et_interested_jobs"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Vagas de interesse"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.195"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_advisor"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="84dp"
+            android:text="Salvar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_interested_jobs"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Limpar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_save"
+            app:layout_constraintWidth_percent="0.8" />
+
+        <TextView
+            android:id="@+id/tv_footer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Há Vagas!"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_clear" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
