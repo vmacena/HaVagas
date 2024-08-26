@@ -10,7 +10,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint("MissingInflatedId", "CutPasteId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         val btnClear = findViewById<Button>(R.id.btn_clear)
 
         btnClear.isEnabled = false
+        btnSave.isEnabled = false
 
         cbAddMobile.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
@@ -39,19 +40,19 @@ class MainActivity : AppCompatActivity() {
         spEducation.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 when (position) {
-                    0, 1 -> { // Fundamental e médio
+                    0, 1 -> {
                         etGraduationYear.visibility = View.VISIBLE
                         etInstitution.visibility = View.GONE
                         etThesisTitle.visibility = View.GONE
                         etAdvisor.visibility = View.GONE
                     }
-                    2, 3 -> { // Graduação e especialização
+                    2, 3 -> {
                         etGraduationYear.visibility = View.VISIBLE
                         etInstitution.visibility = View.VISIBLE
                         etThesisTitle.visibility = View.GONE
                         etAdvisor.visibility = View.GONE
                     }
-                    4, 5 -> { // Mestrado e doutorado
+                    4, 5 -> {
                         etGraduationYear.visibility = View.VISIBLE
                         etInstitution.visibility = View.VISIBLE
                         etThesisTitle.visibility = View.VISIBLE
@@ -90,7 +91,9 @@ class MainActivity : AppCompatActivity() {
         val textWatcher = object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                btnClear.isEnabled = textFields.any { it.text.isNotEmpty() }
+                val isAnyFieldNotEmpty = textFields.any { it.text.isNotEmpty() }
+                btnClear.isEnabled = isAnyFieldNotEmpty
+                btnSave.isEnabled = isAnyFieldNotEmpty
             }
             override fun afterTextChanged(s: Editable?) {}
         }
@@ -163,5 +166,6 @@ class MainActivity : AppCompatActivity() {
         findViewById<EditText>(R.id.et_advisor).text.clear()
         findViewById<EditText>(R.id.et_interested_jobs).text.clear()
         findViewById<Button>(R.id.btn_clear).isEnabled = false
+        findViewById<Button>(R.id.btn_save).isEnabled = false
     }
 }
