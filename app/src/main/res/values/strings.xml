@@ -14,8 +14,9 @@
     <string name="birth_date_hint">Data de nascimento</string>
     <string name="education_hint">Formação</string>
     <string-array name="formacao_array">
+        <item>Selecione sua formação</item>
         <item>Fundamental</item>
-        <item>Médio</item>
+        <item>Ensino Médio</item>
         <item>Graduação</item>
         <item>Especialização</item>
         <item>Mestrado</item>
