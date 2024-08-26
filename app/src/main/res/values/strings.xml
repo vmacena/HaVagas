@@ -1,5 +1,18 @@
 <resources>
     <string name="app_name">HaVagas</string>
+    <string name="full_name_hint">Nome completo</string>
+    <string name="email_hint">E-mail</string>
+    <string name="receive_updates">Deseja receber e-mails com atualizações?</string>
+    <string name="phone_hint">Telefone</string>
+    <string name="commercial">Comercial</string>
+    <string name="residential">Residencial</string>
+    <string name="add_mobile">Adicionar telefone celular</string>
+    <string name="mobile_hint">Telefone celular</string>
+    <string name="male">Masculino</string>
+    <string name="female">Feminino</string>
+    <string name="other">Outro</string>
+    <string name="birth_date_hint">Data de nascimento</string>
+    <string name="education_hint">Formação</string>
     <string-array name="formacao_array">
         <item>Fundamental</item>
         <item>Médio</item>
