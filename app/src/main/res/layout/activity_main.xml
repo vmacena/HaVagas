@@ -10,8 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- Personal Information Section -->
-
         <EditText
             android:id="@+id/et_full_name"
             android:layout_width="0dp"
@@ -35,7 +33,6 @@
             app:layout_constraintTop_toBottomOf="@id/et_full_name"
             app:layout_constraintWidth_percent="0.8" />
 
-        <!-- Phone Information Section -->
 
         <CheckBox
             android:id="@+id/cb_receive_updates"
@@ -110,7 +107,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintWidth_percent="0.8" />
 
-        <!-- Gender and Birth Date Section -->
         <TextView
             android:id="@+id/tv_gender_label"
             android:layout_width="wrap_content"
@@ -142,7 +138,6 @@
                 android:text="Feminino" />
         </RadioGroup>
 
-        <!-- Education Section -->
         <EditText
             android:id="@+id/et_birth_date"
             android:layout_width="0dp"
@@ -218,7 +213,6 @@
             app:layout_constraintTop_toBottomOf="@id/et_thesis_title"
             app:layout_constraintWidth_percent="0.8" />
 
-        <!-- Buttons Section -->
 
         <EditText
             android:id="@+id/et_interested_jobs"
